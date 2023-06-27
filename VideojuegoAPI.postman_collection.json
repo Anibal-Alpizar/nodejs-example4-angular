@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "60f78030-7479-44bb-a97b-71b221187eab",
+		"name": "VideojuegoAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7418211"
+	},
+	"item": [
+		{
+			"name": "Videojuegos",
+			"item": [
+				{
+					"name": "Lista Videojuegos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth-token",
+								"value": "JWTeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzdWFyaW8tYWRtaW4xQHBydWViYS5jb20iLCJpYXQiOjE2Njg2MDc4MTgsImV4cCI6MTY2ODc4MDYxOH0.ZbaAOZyZir8fFZsj78JhuQgLtxsyJVqU1I9FBiQgoJo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/videojuego",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"videojuego"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Videojuego",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/videojuego/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"videojuego",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear videojuego",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Videojuego prueba 2\",\r\n    \"descripcion\":\"Descripción videojuego prueba 2\",\r\n    \"precio\":\"25\",\r\n    \"generos\":[{\"id\":1},{\"id\":3}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/videojuego/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"videojuego",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar videojuego",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Videojuego prueba 3\",\r\n    \"descripcion\":\"Descripción videojuego prueba 3\",\r\n    \"precio\":\"35\",\r\n    \"generos\":[{\"id\":1},{\"id\":3}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/videojuego/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"videojuego",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordenes",
+			"item": [
+				{
+					"name": "Lista Ordenes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/orden",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orden"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Orden",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/orden/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orden",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Ordenes Ventas por Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/orden/vProducto/9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orden",
+								"vProducto",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generos",
+			"item": [
+				{
+					"name": "Lista Generos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/genero",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Genero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/genero/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"genero",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Lista Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/rol",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rol"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Rol",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/rol/USER",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rol",
+								"USER"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Registrar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"usuario-admin3@prueba.com\",\r\n    \"nombre\":\"Administrador 3\",\r\n    \"password\":\"123456\",\r\n    \"role\": \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/registrar",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"usuario-admin1@prueba.com\",\r\n    \"password\":\"12356\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
