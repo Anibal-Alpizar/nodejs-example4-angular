@@ -10,7 +10,6 @@ import { GenericService } from 'src/app/share/generic.service';
   styleUrls: ['./videojuego-form.component.css'],
 })
 export class VideojuegoFormComponent implements OnInit {
-  
   destroy$: Subject<boolean> = new Subject<boolean>();
   //Titulo
   titleForm: string = 'Crear';
@@ -39,6 +38,11 @@ export class VideojuegoFormComponent implements OnInit {
   //Crear Formulario
   formularioReactive() {
     //[null, Validators.required]
+    this.videojuegoForm = this.fb.group({
+      id: [null, null],
+      nombre: [null, null],
+      descripcion: [null, null],
+    });
   }
   listaGeneros() {
     this.generosList = null;

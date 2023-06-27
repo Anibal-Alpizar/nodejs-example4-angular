@@ -9,6 +9,10 @@ const videojuegoController = require('../controllers/videojuegoController');
 
 router.get('/', videojuegoController.get);
 
-router.get('/:id',videojuegoController.getById);
+router.post('/', videojuegoController.create);
 
-module.exports=router
+router.get('/:id', videojuegoController.getById);
+
+router.put('/:id', videojuegoController.update);
+
+module.exports = router;
