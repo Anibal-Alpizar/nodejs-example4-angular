@@ -1,14 +1,19 @@
-<form [formGroup]="videojuegoForm" novalidate >
+<form [formGroup]="videojuegoForm" (ngSubmit)="crearVideojuego()" novalidate>
   <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
     <mat-card-header>
-      <mat-card-title>{{titleForm}} Videojuego</mat-card-title>
+      <mat-card-title>{{ titleForm }} Videojuego</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput formControlName="nombre" maxlength="20" placeholder="Nombre" >
+            <input
+              matInput
+              formControlName="nombre"
+              maxlength="20"
+              placeholder="Nombre"
+            />
             <mat-hint align="end"> / 20</mat-hint>
             <mat-error *ngIf="errorHandling('nombre', 'required')">
               Nombre es <strong>requerido</strong>
@@ -19,11 +24,15 @@
           </mat-form-field>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Descripción" formControlName="descripcion" >
+            <input
+              matInput
+              placeholder="Descripción"
+              formControlName="descripcion"
+            />
             <mat-error *ngIf="errorHandling('descripcion', 'required')">
               Descripción es <strong>requerido</strong>
             </mat-error>
@@ -31,35 +40,37 @@
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Precio" formControlName="precio" >
+            <input matInput placeholder="Precio" formControlName="precio" />
             <mat-error *ngIf="errorHandling('precio', 'required')">
               Precio es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col" *ngIf="generosList">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Generos"  formControlName="generos" multiple>
-              <mat-option >
-                
+            <mat-select
+              placeholder="Generos"
+              formControlName="generos"
+              multiple
+            >
+              <mat-option *ngFor="let g of generosList" [value]="g.id">
+                {{ g.nombre }}
               </mat-option>
             </mat-select>
-            <mat-error >
-              Generos es <strong>requerido</strong>
-            </mat-error>
+            <mat-error> Generos es <strong>requerido</strong> </mat-error>
           </mat-form-field>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col">
           <mat-label>Publicar</mat-label>
           <mat-radio-group formControlName="publicar">
-            <mat-radio-button value="">Sí</mat-radio-button>
-            <mat-radio-button value="">No</mat-radio-button>
+            <mat-radio-button [value]="true">Si</mat-radio-button>
+            <mat-radio-button [value]="false">No</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>

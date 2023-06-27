@@ -35,6 +35,7 @@ export class VideojuegoFormComponent implements OnInit {
     private activeRouter: ActivatedRoute
   ) {
     this.formularioReactive();
+    this.listaGeneros();
   }
   ngOnInit(): void {}
   //Crear Formulario
@@ -71,16 +72,33 @@ export class VideojuegoFormComponent implements OnInit {
     //Establecer submit verdadero
     this.submitted = true;
     //Verificar validación
+    if (this.videojuegoForm.invalid) {
+      return;
+    }
 
     //Obtener id Generos del Formulario y Crear arreglo con {id: value}
+    let gFormat: any = this.videojuegoForm
+      .get('generos')
+      .value.map((x) => ({ ['id']: x }));
 
     //Asignar valor al formulario
-
+    this.videojuegoForm.patchValue({ generos: gFormat });
+    console.log(this.videojuegoForm.value);
+    
     //Accion API create enviando toda la informacion del formulario
+      this.gService.create('videojuego',this.videojuegoForm.value)
+      .pipe(takeUntil(this.destroy$)) .subscribe((data: any) => {
+        //Obtener respuesta
+        this.respVideojuego=data;
+        this.router.navigate(['/videojuego/all'],{
+          queryParams: {update:'true'}
+        });
+      }); 
+
   }
   //Actualizar Videojuego
   actualizarVideojuego() {
-    /* //Establecer submit verdadero
+   //Establecer submit verdadero
     this.submitted=true;
     //Verificar validación
     if(this.videojuegoForm.invalid){
@@ -100,7 +118,7 @@ export class VideojuegoFormComponent implements OnInit {
       this.router.navigate(['/videojuego/all'],{
         queryParams: {update:'true'}
       });
-    }); */
+    }); 
   }
   onReset() {}
   onBack() {
