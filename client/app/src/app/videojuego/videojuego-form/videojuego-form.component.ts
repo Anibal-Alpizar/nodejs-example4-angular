@@ -33,15 +33,23 @@ export class VideojuegoFormComponent implements OnInit {
     private gService: GenericService,
     private router: Router,
     private activeRouter: ActivatedRoute
-  ) {}
+  ) {
+    this.formularioReactive();
+  }
   ngOnInit(): void {}
   //Crear Formulario
   formularioReactive() {
     //[null, Validators.required]
     this.videojuegoForm = this.fb.group({
       id: [null, null],
-      nombre: [null, null],
-      descripcion: [null, null],
+      nombre: [
+        null,
+        Validators.compose([Validators.required, Validators.minLength(3)]),
+      ],
+      descripcion: [null, Validators.required],
+      precio: [null, Validators.required],
+      publicar: [true, Validators.required],
+      generos: [null, Validators.required],
     });
   }
   listaGeneros() {
@@ -56,7 +64,7 @@ export class VideojuegoFormComponent implements OnInit {
   }
 
   public errorHandling = (control: string, error: string) => {
-    //return this.videojuegoForm.controls[control].hasError(error);
+    return this.videojuegoForm.controls[control].hasError(error);
   };
   //Crear Videojueogo
   crearVideojuego(): void {

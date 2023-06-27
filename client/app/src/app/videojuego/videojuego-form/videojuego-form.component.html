@@ -1,5 +1,5 @@
-<form  novalidate >
-  <input type="hidden"  />
+<form [formGroup]="videojuegoForm" novalidate >
+  <input type="hidden" formControlName="id" />
   <mat-card class="shipping-card">
     <mat-card-header>
       <mat-card-title>{{titleForm}} Videojuego</mat-card-title>
@@ -8,10 +8,13 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput maxlength="20" placeholder="Nombre" >
+            <input matInput formControlName="nombre" maxlength="20" placeholder="Nombre" >
             <mat-hint align="end"> / 20</mat-hint>
-            <mat-error >
+            <mat-error *ngIf="errorHandling('nombre', 'required')">
               Nombre es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="errorHandling('nombre', 'minlength')">
+              Nombre debe tener <strong> 3 caracteres</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -20,16 +23,16 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Descripción">
-            <mat-error >
+            <input matInput placeholder="Descripción" formControlName="descripcion" >
+            <mat-error *ngIf="errorHandling('descripcion', 'required')">
               Descripción es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Precio" >
-            <mat-error>
+            <input matInput placeholder="Precio" formControlName="precio" >
+            <mat-error *ngIf="errorHandling('precio', 'required')">
               Precio es <strong>requerido</strong>
             </mat-error>
           </mat-form-field>
@@ -39,7 +42,7 @@
       <div class="row">
         <div class="col" *ngIf="generosList">
           <mat-form-field class="full-width">
-            <mat-select placeholder="Generos"  multiple>
+            <mat-select placeholder="Generos"  formControlName="generos" multiple>
               <mat-option >
                 
               </mat-option>
@@ -54,7 +57,7 @@
       <div class="row">
         <div class="col">
           <mat-label>Publicar</mat-label>
-          <mat-radio-group >
+          <mat-radio-group formControlName="publicar">
             <mat-radio-button value="">Sí</mat-radio-button>
             <mat-radio-button value="">No</mat-radio-button>
           </mat-radio-group>
